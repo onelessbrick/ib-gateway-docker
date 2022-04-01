@@ -1,5 +1,9 @@
-# Create new build from current directory
-# Convert this to helm when you get a chance
+# Creates new build from current directory
+#
+# TODO: Convert this to helm 
+# TODO: Add Openshift readiness and liveness probes for port 4003
+# TODO: Add only readiness probe for port 5900 as it is not ncessary for proper 
+	operation and pod should not be restarted because vnc is down
 
 oc delete all -lapp=ibgateway; oc delete bc ibgateway
 oc delete cm ibgateway-config
