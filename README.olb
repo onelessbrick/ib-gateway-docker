@@ -1,0 +1,26 @@
+# Create new build from current directory
+# Convert this to helm when you get a chance
+
+oc delete all -lapp=ibgateway; oc delete bc ibgateway
+oc delete cm ibgateway-config
+oc delete route vnc-ibgateway api-ibgateway
+
+# Next, for security reasons create secrets from OpenShift console
+oc secrets link builder ibgateway-secrets
+oc create configmap ibgateway-config --from-file=./ibgateway.properties
+
+oc new-build --name=ibgateway --strategy=docker --binary; oc start-build ibgateway --from-dir=.
+
+oc new-app ibgateway --env-file=ibgateway.properties
+
+# Add the following to the ibgateway deployment 
+        - name: ibgateway
+	 	.
+		.
+		.
+          envFrom:
+          - configMapRef:
+              name: ibgateway-config
+
+# No routes are necessary
+oc port-forward ibgateway-xxxxx-yyyy 5901:5900

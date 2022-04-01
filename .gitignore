@@ -14,3 +14,7 @@ Logs/*
 node_modules/
 
 *.local
+
+*.properties
+
+ibgateway-*-standalone-linux-x64.sh
