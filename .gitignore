@@ -15,6 +15,9 @@ node_modules/
 
 *.local
 
+.DS_Store
+*.swp
 *.properties
-
 ibgateway-*-standalone-linux-x64.sh
+
+
