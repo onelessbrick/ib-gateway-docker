@@ -11,7 +11,11 @@ RUN  apt-get update \
 	&& apt-get install -y x11vnc \
   && apt-get install -y socat \
   && apt-get install -y software-properties-common \
-  && apt-get install -y dos2unix
+  && apt-get install -y dos2unix \
+  && apt-get install -y net-tools \
+  && apt-get install -y wget \
+  && apt-get install -y telnet 
+
 
 # Setup IB TWS
 RUN mkdir -p /opt/TWS
